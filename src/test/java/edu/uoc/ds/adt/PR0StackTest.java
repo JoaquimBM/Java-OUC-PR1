@@ -2,6 +2,7 @@ package edu.uoc.ds.adt;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -31,7 +32,7 @@ public class PR0StackTest {
     }
 
 
-    @org.junit.Test
+    @Test
     public void stackTest() {
 
         assertEquals(this.pr0q.CAPACITY-1, this.pr0q.getStack().size());

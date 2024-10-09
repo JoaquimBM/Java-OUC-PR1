@@ -2,44 +2,61 @@ package edu.uoc.ds.adt;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Assert;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class PR1PeriodicFunctionTest {
+public class PR1PeriodicFunctionQueueTest {
 
-    PR0Queue pr0q;
+    PR1PeriodicFunctionQueue pr1q;
+
+
 
 
     private void fillQueue() {
-        for (char c = '0'; c < '9'; c++) {
-            pr0q.add(Character.valueOf(c));
-
+        for (int i = 0; i < this.pr1q.CAPACITY ; i++) {
+            PR1PeriodicFunction Periodic = new PR1PeriodicFunction(i+1);
+            pr1q.add(Periodic.getPeriodicNumber());
         }
-        System.out.println();
+
     }
 
     @Before
     public void setUp() {
-        this.pr0q = new PR0Queue();
-
-        assertNotNull(this.pr0q.getQueue());
+        this.pr1q = new PR1PeriodicFunctionQueue();
+        assertNotNull(this.pr1q.getQueue());
         fillQueue();
     }
 
     @After
     public void release() {
-        this.pr0q = null;
+        this.pr1q = null;
     }
 
 
     @org.junit.Test
     public void queueTest() {
-        assertEquals(this.pr0q.CAPACITY-1, this.pr0q.getQueue().size());
+            assertEquals(this.pr1q.CAPACITY, this.pr1q.getQueue().size());
 
-        assertEquals(this.pr0q.clearFullQueue(), new String("0 1 2 3 4 5 6 7 8 "));
+            Assert.assertTrue("", pr1q.getQueue().poll()==1);
+            Assert.assertTrue("", pr1q.getQueue().poll()==4);
+            Assert.assertTrue("", pr1q.getQueue().poll()==9);
+            Assert.assertTrue("", pr1q.getQueue().poll()==0);
+            Assert.assertTrue("", pr1q.getQueue().poll()==1);
+            Assert.assertTrue("", pr1q.getQueue().poll()==4);
+            Assert.assertTrue("", pr1q.getQueue().poll()==9);
+            Assert.assertTrue("", pr1q.getQueue().poll()==0);
+            Assert.assertTrue("", pr1q.getQueue().poll()==1);
+            Assert.assertTrue("", pr1q.getQueue().poll()==4);
+            Assert.assertTrue("", pr1q.getQueue().poll()==9);
+            Assert.assertTrue("", pr1q.getQueue().poll()==0);
+            Assert.assertTrue("", pr1q.getQueue().poll()==1);
+            Assert.assertTrue("", pr1q.getQueue().poll()==4);
+            Assert.assertTrue("", pr1q.getQueue().poll()==9);
+            assertEquals(0,this.pr1q.getQueue().size());
 
-        assertEquals(0, this.pr0q.getQueue().size());
+
     }
 
 }

@@ -16,7 +16,9 @@ public class PR0QueueTest {
             pr0q.add(Character.valueOf(c));
 
         }
+        System.out.println();
     }
+
     @Before
     public void setUp() {
         this.pr0q = new PR0Queue();

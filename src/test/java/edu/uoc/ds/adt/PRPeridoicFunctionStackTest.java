@@ -1,44 +1,56 @@
 package edu.uoc.ds.adt;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class PR0StackTest {
+public class PRPeridoicFunctionStackTest {
 
-    PR0Stack pr0q;
+    PR1PeriodicFunctionStack pr1q;
 
     private void fillStack() {
-        for (char c = '0'; c < '9'; c++) {
-            pr0q.push(Character.valueOf(c));
+        for (int i = 0; i < this.pr1q.CAPACITY ; i++) {
+            PR1PeriodicFunction Periodic = new PR1PeriodicFunction(i+1);
+            pr1q.push(Periodic.getPeriodicNumber());
         }
     }
 
     @Before
     public void setUp() {
-        this.pr0q = new PR0Stack();
-
-        assertNotNull(this.pr0q.getStack());
+        this.pr1q = new PR1PeriodicFunctionStack();
+        assertNotNull(this.pr1q.getStack());
         this.fillStack();
 
     }
 
     @After
     public void release() {
-        this.pr0q = null;
+        this.pr1q = null;
     }
 
 
     @Test
     public void stackTest() {
-
-        assertEquals(this.pr0q.CAPACITY-1, this.pr0q.getStack().size());
-
-        assertEquals(this.pr0q.clearAllStack(), new String("8 7 6 5 4 3 2 1 0 "));
-
-        assertEquals(0, this.pr0q.getStack().size());
+        assertEquals(this.pr1q.CAPACITY, this.pr1q.getStack().size());
+        Assert.assertTrue("", pr1q.getStack().pop()==9);
+        Assert.assertTrue("", pr1q.getStack().pop()==4);
+        Assert.assertTrue("", pr1q.getStack().pop()==1);
+        Assert.assertTrue("", pr1q.getStack().pop()==0);
+        Assert.assertTrue("", pr1q.getStack().pop()==9);
+        Assert.assertTrue("", pr1q.getStack().pop()==4);
+        Assert.assertTrue("", pr1q.getStack().pop()==1);
+        Assert.assertTrue("", pr1q.getStack().pop()==0);
+        Assert.assertTrue("", pr1q.getStack().pop()==9);
+        Assert.assertTrue("", pr1q.getStack().pop()==4);
+        Assert.assertTrue("", pr1q.getStack().pop()==1);
+        Assert.assertTrue("", pr1q.getStack().pop()==0);
+        Assert.assertTrue("", pr1q.getStack().pop()==9);
+        Assert.assertTrue("", pr1q.getStack().pop()==4);
+        Assert.assertTrue("", pr1q.getStack().pop()==1);
+        assertEquals(0,this.pr1q.getStack().size());
     }
 }
