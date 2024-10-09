@@ -4,13 +4,13 @@ package edu.uoc.ds.adt;
 import edu.uoc.ds.adt.sequential.Queue;
 import edu.uoc.ds.adt.sequential.QueueArrayImpl;
 
-public class PR1PeriodicFunction {
+public class PR1PeriodicFunctionQueue {
 
-    public final int CAPACITY = 10;
+    public final int CAPACITY = 15;
 
-    private Queue<Character> queue;
+    private Queue<Integer> queue;
 
-    public PR1PeriodicFunction() {
+    public PR1PeriodicFunctionQueue() {
         newQueue();
     }
     public void newQueue() {
@@ -18,20 +18,18 @@ public class PR1PeriodicFunction {
     }
 
 
-    public String clearFullQueue() {
-        StringBuilder sb = new StringBuilder();
-        char r;
+    public Queue<Integer> clearFullQueue() {
         while (!queue.isEmpty()) {
-            sb.append(queue.poll()).append(" ");
+            queue.poll();
         }
-        return sb.toString();
+        return queue;
     }
 
-    public Queue<Character> getQueue() {
+    public Queue<Integer> getQueue() {
         return this.queue;
     }
 
-    public void add(Character c) {
+    public void add(int c) {
         this.queue.add(c);
     }
 }
